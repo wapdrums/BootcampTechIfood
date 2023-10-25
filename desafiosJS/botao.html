@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tela Simples</title>
+    <style>
+        /* Estilos CSS para o botão */
+        #meuBotao {
+            padding: 10px 20px;
+            background-color: #c834db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Tela Simples</h1>
+
+    <button id="meuBotao">Clique em mim</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        // Função que será executada quando o botão for clicado
+        document.getElementById("meuBotao").addEventListener("click", function () {
+            document.getElementById("resultado").textContent = "O botão foi clicado!";
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulário com Validações</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin-top: 10vh;
+            margin-left: 70vh;
+            margin-right: 70vh;
+        }
+
+        #formulario-container {
+            background-color: #fff;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+
+        #formulario-container h1 {
+            color: #333;
+        }
+
+        #meuFormulario {
+            text-align: left;
+        }
+
+        label, input {
+            display: block;
+            margin: 0.5px 0;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #mensagemErro {
+            color: red;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Formulário</h1>
+
+    <form id="meuFormulario" onsubmit="return validarFormulario()">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required placeholder="Nome completo">
+        <br><br>
+
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" name="cpf" required placeholder="000.000.000-00">
+        <br><br>
+
+        <label for="cep">CEP:</label>
+        <input type="text" id="cep" name="cep" required placeholder="00000-000">
+        <br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required placeholder="email.teste@email.com">
+        <br><br>
+
+        <label for="telefone">Telefone:</label>
+        <input type="tel" id="telefone" name="telefone" required placeholder="(DDD) 99999-9999">
+        <br><br>
+
+        <input type="submit" value="Enviar">
+    </form>
+
+    <p id="mensagemErro" style="color: red;"></p>
+
+    <script>
+        function validarFormulario() {
+            const nome = document.getElementById("nome").value;
+            const cpf = document.getElementById("cpf").value;
+            const cep = document.getElementById("cep").value;
+            const email = document.getElementById("email").value;
+            const telefone = document.getElementById("telefone").value;
+
+            // Expressões regulares para validar CPF, CEP e email
+            const regexCPF = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+            const regexCEP = /^\d{5}-\d{3}$/;
+            const regexEmail = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+
+            if (!nome || !cpf || !cep || !email || !telefone) {
+                document.getElementById("mensagemErro").textContent = "Todos os campos são obrigatórios.";
+                return false;
+            }
+
+            if (!regexCPF.test(cpf)) {
+                document.getElementById("mensagemErro").textContent = "CPF inválido. Use o formato 123.456.789-09.";
+                return false;
+            }
+
+            if (!regexCEP.test(cep)) {
+                document.getElementById("mensagemErro").textContent = "CEP inválido. Use o formato 00000-000";
+                return false;
+            }
+
+            if (!regexEmail.test(email)) {
+                document.getElementById("mensagemErro").textContent = "O email inserido não é válido.";
+                return false;
+            }
+
+            document.getElementById("mensagemErro").textContent = "";
+            return true;
+        }
+    </script>
+</body>
+</html>

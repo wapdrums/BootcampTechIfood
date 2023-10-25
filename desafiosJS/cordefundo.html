@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tela com Botão de Mudar Cor</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        #meuBotao {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tela com Botao de Mudar Cor</h1>
+
+    <button id="meuBotao" onclick="mudarCorDeFundo()">Mudar Cor de Fundo</button>
+
+    <script>
+        function mudarCorDeFundo() {
+            const cores = ["#3498db", "#e74c3c", "#27ae60", "#f1c40f"];
+            const corAleatoria = cores[Math.floor(Math.random() * cores.length)];
+            document.body.style.backgroundColor = corAleatoria;
+        }
+    </script>
+</body>
+</html>

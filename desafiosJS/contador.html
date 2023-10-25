@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contador</title>
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contador</h1>
+    <p>Contagem: <span id="contador">0</span></p>
+
+    <button id="aumentarBotao" onclick="aumentarContador()">Aumentar</button>
+
+    <script>
+        // Inicializamos o contador com 0
+        let contador = 0;
+
+        // Função para aumentar o contador
+        function aumentarContador() {
+            contador++;
+            document.getElementById("contador").textContent = contador;
+        }
+    </script>
+</body>
+</html>
